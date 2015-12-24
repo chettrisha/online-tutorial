@@ -33,3 +33,7 @@ footer p {
 .toast-success {
   background-color: #13987e;
 }
+.navbar-inverse {
+   background-color: none;
+  border-color: none;
+}

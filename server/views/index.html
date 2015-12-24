@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Traning Room</title>
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
@@ -12,11 +11,12 @@
 <body ng-app="app">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header"><a href="/" class="navbar-brand">Traning Room<h6>-Extreme Tech Training</h6></a></div>
+            <div class="navbar-header"><a href="/" class="navbar-brand"><img src = "/images/logo.png" height = "55" width="60" /></a></div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="/">Home</a></li>
-                    <li><a href="/courses">Courses123</a></li>
+                    <li><a href="/courses">Courses</a></li>
+                    <li><a href="/categories">Course Category</a></li>
                 </ul>
                 <div ng-include="'/partials/account/navbar-login'"></div>
             </div>
@@ -26,7 +26,7 @@
         <div ng-view></div>
     </section>
     <footer class="container text-center">
-        <p>&copy; 2015 Traning Room International Ltd.</p>
+        <p>&copy; 2016 EduHub - Improve your Learning Capability.</p>
     </footer>
     <script type="text/javascript" src="/vendor/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="/vendor/bootstrap/dist/js/bootstrap.js"></script>
@@ -46,7 +46,11 @@
     <script type="text/javascript" src="/app/admin/mvUserListCtrl.js"></script>
     <script type="text/javascript" src="/app/courses/mvCourseListCtrl.js"></script>
     <script type="text/javascript" src="/app/courses/mvCourse.js"></script>
+
     <script type="text/javascript" src="/app/courses/mvCachedCourses.js"></script>
+    <script type="text/javascript" src="/app/categories/mvCategoriesListCtrl.js"></script>
+    <script type="text/javascript" src="/app/categories/mvCategories.js"></script>
+    <script type="text/javascript" src="/app/courses/mvCachedCategories.js"></script>
 </body>
 
 </html>
