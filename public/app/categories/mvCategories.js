@@ -1,20 +1,23 @@
-angular.module('app').factory('mvCategories', function($http, mvIdentity, $q, mvUser) {
-  return {
-  	//add category
-    createCategory: function(newCategoryData) {
-      var newCategory = new mvCategories(newCategoryData);
-      var dfd = $q.defer();
+angular.module('app').factory('mvCategories', function($http, $q) {
+    return {
+        //add category
+        createCategory: function(newCategoryData) {
 
-      newCategory.$save().then(function() {
-        mvIdentity.currentUser = newCategory;
-        dfd.resolve();
-      }, function(response) {
-        dfd.reject(response.data.reason);
-      });
+            var dfd = $q.defer();
+            /** add new categories in categories model
+            **/
+            $http.post('/api/categories/add', newCategoryData).then(function(response) {
+                if (response.data.success) {
+                    dfd.resolve(true);
+                } else {
+                    dfd.resolve(false);
+                }
+            });
+            return dfd.promise;
 
-      return dfd.promise;
-    },
 
-   
-  }
+        },
+
+
+    }
 });

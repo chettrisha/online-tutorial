@@ -2,10 +2,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 // create a schema
-var categoriesSchema = new Schema({
-  name: String,
+var categoriesSchema = new Schema({ 
   categoryName: { type: String, required: true, unique: true },
-  categoryDesc: { type: String, required: true },
+  categoryDesc: { type: String },
   createdAt: Date
 });
 
