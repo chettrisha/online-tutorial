@@ -11,8 +11,8 @@
         </div>
         <button ng-click="signin(username, password)" class="btn btn-primary">Sign In</button>
     </form>
-    <ul ng-show="identity.isAuthenticated()" class="nav navbar-nav navbar-right">
-        <li class="dropdown"><a href="" data-toggle="dropdown" class="dropdown-toggle">{{identity.currentUser.firstName + " " + identity.currentUser.lastName}}<b class="caret"></b></a>
+    <ul ng-show="identity.isAuthenticated()" class="navbar-nav navbar-right user-img">
+        <li class="dropdown"><img src = "/images/user.png" height = "45" width="45" /><a href="" data-toggle="dropdown" class="dropdown-toggle">{{identity.currentUser.firstName + " " + identity.currentUser.lastName}}<b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li ng-show="identity.currentUser.isAdmin()"><a href="/admin/users">User Admin</a></li>
                 <li><a href="/profile">Profile</a></li>

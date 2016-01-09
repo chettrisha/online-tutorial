@@ -5,15 +5,25 @@ angular.module('app').controller('mvCategoriesListCtrl', function($scope, mvCate
       categoryName: $scope.categoryName,
       categoryDesc: $scope.categoryDesc,
     };
-
-    mvCategories.createCategory(newCategoryData).then(function() {
-      mvNotifier.notify('Category Added Successfully !');
+  mvCategories.createCategory(newCategoryData).then(function() {
+     mvNotifier.notify('Category Added Successfully !');
       $location.path('/');
-      $window.location.reload();
     }, function(reason) {
       mvNotifier.error(reason);
     })
   }
+
+//deleteCategory
+$scope.deleteCategory = function(id) {
+   mvCategories.createCategory(id).then(function() {
+      mvNotifier.notify('Category Deleted Successfully !');
+      $location.path('/');
+    }, function(reason) {
+      alert(reason);
+      mvNotifier.error(reason);
+    })
+  }
+
 
   $scope.getAllCategory = function() {
     

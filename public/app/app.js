@@ -30,8 +30,12 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
         controller: 'mvCourseListCtrl'
       })
      .when('/categories', { templateUrl: '/partials/categories/categories',
-        controller: 'mvCategoriesListCtrl', resolve: routeRoleChecks.admin
+        controller: 'mvCategoriesListCtrl'
       })
+     .when('/categories/editCategories/:id', { templateUrl: '/partials/categories/categories',
+        controller: 'mvCategoriesListCtrl'
+      })
+     
 
 });
 
