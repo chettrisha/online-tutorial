@@ -1,29 +1,30 @@
-angular.module('app').controller('mvCategoriesListCtrl', function($scope, mvCategories, mvNotifier, $location, $http, $window) {
+angular.module('app').controller('mvCategoriesListCtrl', function($scope, mvCategories, mvNotifier, $location, $http, $window, $route) {
 
   $scope.addcategory = function() {
     var newCategoryData = {
       categoryName: $scope.categoryName,
-      categoryDesc: $scope.categoryDesc,
     };
-  mvCategories.createCategory(newCategoryData).then(function() {
-     mvNotifier.notify('Category Added Successfully !');
-      $location.path('/');
-    }, function(reason) {
-      mvNotifier.error(reason);
-    })
-  }
 
-//deleteCategory
-$scope.deleteCategory = function(id) {
-   mvCategories.createCategory(id).then(function() {
-      mvNotifier.notify('Category Deleted Successfully !');
-      $location.path('/');
+    mvCategories.createCategory(newCategoryData).then(function() {
+      console.log("Category Added Successfully !");
+      $route.reload();
+      mvNotifier.notify('Category Added Successfully !');
     }, function(reason) {
       alert(reason);
       mvNotifier.error(reason);
     })
   }
 
+  $scope.deleteCategory = function(id) {
+    var del = $window.confirm('Are you sure you want to delete?');
+    if (del) {
+      $http.delete("/api/categories/" + id).success(function(data) {
+        //reloads page
+        $route.reload();
+        mvNotifier.notify('Deleted successfully!');
+      })
+    }
+  }
 
   $scope.getAllCategory = function() {
     
@@ -34,7 +35,7 @@ $scope.deleteCategory = function(id) {
         if (response.data) {
           console.log(response.data);
             $scope.allCategory=response.data;
-           // $window.location.reload();
+            
 
         } else {
 

@@ -11,10 +11,14 @@ module.exports = function(app) {
   app.post('/api/users', users.createUser);
   app.put('/api/users', users.updateUser);
 
-  app.get('/api/courses', courses.getCourses);
+  app.get('/api/courses', courses.getAllCourses);
+  app.get('/api/courses/:id', courses.getCourse);
+  app.post('/api/courses', courses.addCourses);
 
   app.post('/api/categories', categories.createCategory);
-  app.get('/api/categories', categories.getCategories);
+  app.delete('/api/categories/:cid', categories.deleteCategory);
+  app.get('/api/categories', categories.getCategories);  
+  
 
   app.get('/partials/*', function(req, res) {
     res.render('../../public/app/' + req.params[0]);

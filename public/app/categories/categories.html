@@ -1,19 +1,29 @@
- <div class="container" ng-init="getAllCategory()">
-        <div class="well">
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background-color: #f5f5f5
+}
+</style>
+<div class="container" ng-init="getAllCategory()">
+    <div class="well">
         <form name="addCategoryForm" class="form-horizontal">
             <fieldset>
                 <legend>Add Catetory</legend>
                 <div class="form-group">
                     <label for="categoryName" class="col-md-2 control-label">Category Name</label>
                     <div class="col-md-5">
-                        <input name="categoryName" type="text" placeholder="Category Name"  
-                         ng-model= "categoryName" class="form-control" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="categoryName" class="col-md-2 control-label">Category Description</label>
-                    <div class="col-md-5">
-                        <input name="categoryDesc" type="text" placeholder="Category Description" ng-model= "categoryDesc" class="form-control" />
+                        <input name="categoryName" type="text" placeholder="Category Name" ng-model="categoryName" class="form-control" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -26,23 +36,22 @@
                 </div>
             </fieldset>
         </form>
-   </div>
-   <div class="well">
-    <table>
-        <tr>
-            <td><h3>Categories</h3></td>
-            <td><h3>Created Date</h3></td>
-            <td><h3>Action</h3></td>
-        </tr>
-        <tr ng-repeat="cat in allCategory">
-            <td>{{cat.categoryName}}</td>
-            <td>{{cat.createdAt}}</td>
-            <td><a href="/categories/editCategories/{{cat._id}}">✔ EDIT</a></td>
-            <td><a data-ng-click="deleteCategory(cat._id);">✖ DELETE</a></td>
-        </tr>
-    </table>
-  <!--<h3>In Json Format</h3>
-    <pre>{{allCategory | json}}</pre> -->
-   </div>
+    </div>
+    <div class="well">
+        <table>
+            <tr>
+                <td><b>Date</b></td>
+                <td><b>Categories</b></td>
+                <td colspan="2" align="center"><center><b>Action </b></center></td>
+            </tr>
+            <tr ng-repeat="cat in allCategory | orderBy:'categoryName'">
+                <td>{{cat.createdAt | date:'yyyy-MM-dd'}}</td>
+                <td>{{cat.categoryName}}</td>
+                <td><a href="">✔ EDIT</a></td>
+                <td><a href="" ng-click="deleteCategory(cat._id)">✖ DELETE</a></td>
+            </tr>
+        </table>
+      <!--   <h3>In Json Format</h3>
+      <pre>{{allCategory | json}}</pre> -->
+    </div>
 </div>
-
