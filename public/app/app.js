@@ -38,6 +38,10 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
      .when('/course/:id', { templateUrl: '/partials/courses/course-details',
         controller: 'mvCourseDetailCtrl'
       })
+     .when('/categories/edit/:id', { templateUrl: '/partials//categories/category-edit',
+        controller: 'mvCategoryDetailCtrl'
+      })
+
 
 });
 

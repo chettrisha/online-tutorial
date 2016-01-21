@@ -48,3 +48,28 @@ exports.deleteCategory = function(req, res) {
       });
   });
 };
+
+exports.updateCategory = function(req, res) {
+  console.log(req.params.id);
+  var updatedCategory = req.body;
+  delete updatedCategory._id;
+  //create new course in DB  
+    Categories.findOneAndUpdate({
+        '_id': req.params.id
+    }, req.body, function(err, category) {
+        if (err) {
+            return handleError(res, err);
+        }
+        console.log(category);
+        return res.json(category);
+    });
+  
+};
+
+//update category by id
+exports.getCategory = function(req, res) {
+ // alert("Catergory Id : "+req.params.id);
+    Categories.find({'_id':req.params.id}).exec(function(err, course) {
+      res.send(course[0]);
+  })
+};

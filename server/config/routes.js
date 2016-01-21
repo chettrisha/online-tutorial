@@ -16,9 +16,11 @@ module.exports = function(app) {
   app.post('/api/courses', courses.addCourses);
 
   app.post('/api/categories', categories.createCategory);
+  app.get('/api/categories/:cid', categories.getCategory);
   app.delete('/api/categories/:cid', categories.deleteCategory);
   app.get('/api/categories', categories.getCategories);  
-  
+  app.put('/api/categories/:cid', categories.updateCategory);
+
 
   app.get('/partials/*', function(req, res) {
     res.render('../../public/app/' + req.params[0]);
