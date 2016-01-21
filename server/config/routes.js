@@ -14,6 +14,7 @@ module.exports = function(app) {
   app.get('/api/courses', courses.getAllCourses);
   app.get('/api/courses/:id', courses.getCourse);
   app.post('/api/courses', courses.addCourses);
+  app.delete('/api/courses/:id', courses.deleteCourse);
 
   app.post('/api/categories', categories.createCategory);
   app.get('/api/categories/:cid', categories.getCategory);

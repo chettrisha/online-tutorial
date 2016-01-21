@@ -1,4 +1,4 @@
-angular.module('app').controller('mvCourseListCtrl', function($http, $scope, mvCachedCourses, $location) {
+angular.module('app').controller('mvCourseListCtrl', function($http, $scope, $route, mvCachedCourses, $location, mvNotifier, $window) {
   $scope.courses = mvCachedCourses.query();
 
   $scope.sortOptions = [{value:"title",text: "Sort by Title"},
@@ -27,7 +27,17 @@ angular.module('app').controller('mvCourseListCtrl', function($http, $scope, mvC
         
       });
     }
-   
+  }
 
+   $scope.deleteCourse = function(id) {
+    var del = $window.confirm('Are you sure you want to deletes11?');
+
+    if (del) {
+      $http.delete("/api/courses/" + id).success(function(data) {
+        //reload page
+        $route.reload();
+        mvNotifier.notify('Deleted successfully!');
+      })
+    }
   }
 });
