@@ -1,11 +1,19 @@
 <div class="container top-padding-med">
-	<div class="well">
-		<h2>{{course.title}}</h2>
-		<p>Published: {{course.published | date}}</p>
-		<p>{{course.description}}</p>
-		<p ng-show="course">
-		{{course.videolink}}
-		<ng-youtube-embed url="course.videolink" width="600px" height="400px" autohide="true" theme="light"></ng-youtube-embed>
-		</p>
-	</div>
+    <div class="well">
+        <h2>{{course.title}}</h2>
+        <p>Published11: {{course.published| date}} <a href="/courses/edit/{{course._id}}">Edit</a></p>
+        <p>{{course.description}}</p>
+        <p ng-show="course">
+        <div my-youtube code="course.videolink"></div>
+        </p>
+        <form method="post" name="form">
+            <div class="formLayout">
+                <label></label>
+                <textarea rows="10" cols="35" ng-model="comment.comment" required>{{comment.comment}}</textarea><br><br>
+                <label></label>
+                <input type="submit" id="update" value="Comment" name="comment" ng-click="submitComment(form.$valid)"><br>
+            </div>
+        </form>
+
+    </div>
 </div>
