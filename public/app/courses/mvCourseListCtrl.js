@@ -28,7 +28,7 @@ angular.module('app').controller('mvCourseListCtrl', function($http, $scope, $fi
   }
 
   $scope.showCategory = function(categoryId) {
-      //console.log(categoryId); 
+      console.log(categoryId); 
       //$scope.statuses = ['New', 'Open', 'Waiting for Info', 'On Hold', 'In Progress', 'Resolved'];
       $scope.selectedCategory = $filter('filter')($scope.allCategory, {
           _id: categoryId
