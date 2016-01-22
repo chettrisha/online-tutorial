@@ -14,10 +14,12 @@ module.exports = function(app) {
   app.get('/api/courses', courses.getAllCourses);
   app.get('/api/courses/:id', courses.getCourse);
   app.post('/api/courses', courses.addCourses);
+  app.put('/api/courses/:id', courses.updateCourse);
   app.delete('/api/courses/:id', courses.deleteCourse);
 
+ 
   app.post('/api/categories', categories.createCategory);
-  app.get('/api/categories/:cid', categories.getCategory);
+  app.get('/api/categories/:id', categories.getCategory);
   app.delete('/api/categories/:cid', categories.deleteCategory);
   app.get('/api/categories', categories.getCategories);  
   app.put('/api/categories/:cid', categories.updateCategory);

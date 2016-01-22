@@ -47,11 +47,11 @@ tr:hover {
             <tr ng-repeat="cat in allCategory | orderBy:'categoryName'">
                 <td>{{cat.createdAt | date:'yyyy-MM-dd'}}</td>
                 <td>{{cat.categoryName}}</td>
-                <td><a href="/categories/edit/{{cat._id}}">✔ EDIT</a></td>
-                <td><a href="" ng-click="deleteCategory(cat._id)">✖ DELETE</a></td>
+                <td><a href="/categories/edit/{{cat._id}}">Edit</a></td>
+                <td><a href="" ng-click="deleteCategory(cat._id)">Delete</a></td>
             </tr>
         </table>
-      <!--   <h3>In Json Format</h3>
-      <pre>{{allCategory | json}}</pre> -->
+<!--        <h3>In Json Format</h3>-->
+<!--        <pre>{{allCategory | json}}</pre>-->
     </div>
 </div>

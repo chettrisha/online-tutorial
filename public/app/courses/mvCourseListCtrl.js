@@ -16,20 +16,29 @@ angular.module('app').controller('mvCourseListCtrl', function($http, $scope, $ro
         } 
     });
   }
+  
+   $scope.getAllComments = function() {
+   $http.get('/api/comments').then(function(response) {
+      console.log(response);
+        if (response.data) {
+            $scope.allComments=response.data; 
+        } 
+    });
+  }
 
   $scope.addCourse = function(isValid){
     //console.log(isValid);
     if(isValid){
       console.log($scope.course);
       $http.post('/api/courses',$scope.course).then(function(response) {
-        console.log(response);
+        mvNotifier.notify('Added successfully!');
         $location.path('/courses');
         
       });
     }
   }
 
-   $scope.deleteCourse = function(id) {
+  $scope.deleteCourse = function(id) {
     var del = $window.confirm('Are you sure you want to deletes11?');
 
     if (del) {
