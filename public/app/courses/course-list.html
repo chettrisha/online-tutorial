@@ -1,4 +1,4 @@
-<div class="container top-padding-med">
+<div class="container top-padding-med" ng-init="getAllCategory()">
     <div class="pull-right">
         <a href="/courses/add" ng-show="identity.isAuthenticated() && identity.isAuthorized('admin')">Add New Course</a>
         <form class="form-inline">
@@ -24,8 +24,8 @@
                 <td><a href="/course/{{course._id}}">{{course.title}}</a></td>
                 <td>{{showCategory(course.category)}}</td>
                 <td>{{course.published | date}}</td>
-                <td><a href="/courses/edit/{{course._id}}">Edit</a></td>
-                <td><a href="" ng-click="deleteCourse(course._id)">Delete</a></td>
+                <td ng-show="identity.isAuthenticated() && identity.isAuthorized('admin')"><a href="/courses/edit/{{course._id}}">Edit</a></td>
+                <td ng-show="identity.isAuthenticated() && identity.isAuthorized('admin')"><a href="" ng-click="deleteCourse(course._id)">Delete</a></td>
             </tr>
         </tbody>
     </table>

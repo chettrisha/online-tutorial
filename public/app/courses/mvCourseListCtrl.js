@@ -28,13 +28,13 @@ angular.module('app').controller('mvCourseListCtrl', function($http, $scope, $fi
   }
 
   $scope.showCategory = function(categoryId) {
-      console.log(categoryId); 
       //$scope.statuses = ['New', 'Open', 'Waiting for Info', 'On Hold', 'In Progress', 'Resolved'];
       $scope.selectedCategory = $filter('filter')($scope.allCategory, {
           _id: categoryId
       });
+
       //console.log($scope.selectedCategory[0].categoryName);
-      return (categoryId && $scope.selectedCategory.length) ? $scope.selectedCategory[0].categoryName : 'Not set';
+      return (categoryId && $scope.selectedCategory) ? $scope.selectedCategory[0].categoryName : 'Not set';
   };
 
   $scope.addCourse = function(isValid){
