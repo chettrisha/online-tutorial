@@ -57,9 +57,11 @@ exports.deleteCategory = function (req, res) {
 };
 
 exports.updateCategory = function(req, res) {
+  
   console.log(req.params.id);
+
   var updatedCategory = req.body;
-  delete updatedCategory._id;
+  //delete updatedCategory._id;
   //create new course in DB  
     Categories.findOneAndUpdate({
         '_id': req.params.id
@@ -73,6 +75,23 @@ exports.updateCategory = function(req, res) {
   
 };
 
+
+/*exports.updateCourse = function(req, res) {
+  console.log(req.params.id);
+  var updatedCourse = req.body;
+  delete updatedCourse._id;
+  //create new course in DB  
+    Course.findOneAndUpdate({
+        '_id': req.params.id
+    }, req.body, function(err, course) {
+        if (err) {
+            return handleError(res, err);
+        }
+        console.log(course);
+        return res.json(course);
+    });
+  
+};*/
 
 //update category by id
 exports.getCategory = function(req, res) {

@@ -14,7 +14,7 @@ angular.module('app').controller('mvCategoryDetailCtrl', function($http, $scope,
         $http.put('/api/categories/'+$scope.cat._id,$scope.cat).then(function(response) {
          console.log(response);
           mvNotifier.notify('Updated successfully!');
-          $location.path('/categories');
+          $location.path('/categories/edit/'+cat._id);
           
         });
       }

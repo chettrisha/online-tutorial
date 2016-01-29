@@ -38,14 +38,11 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
      .when('/courses/edit/:id', { templateUrl: '/partials/courses/course-edit',
         controller: 'mvCourseDetailCtrl', resolve: routeRoleChecks.admin
       })
-     .when('/courses/edit/:id', { templateUrl: '/partials/courses/course-edit',
-        controller: 'mvCourseDetailCtrl'
-      })
      .when('/course/:id', { templateUrl: '/partials/courses/course-details',
         controller: 'mvCourseDetailCtrl'
       })
      .when('/categories/edit/:id', { templateUrl: '/partials/categories/category-edit',
-        controller: 'mvCategoryDetailCtrl'
+        controller: 'mvCategoryDetailCtrl', resolve: routeRoleChecks.admin
       })
 
 });
