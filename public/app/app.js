@@ -50,7 +50,7 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
 
 });
 
-angular.module('app').directnneive('myYoutube', function($sce) {
+angular.module('app').directive('myYoutube', function($sce) {
   return {
     restrict: 'EA',
     scope: { code:'=' },
