@@ -23,6 +23,9 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
       .when('/signup', { templateUrl: '/partials/account/signup',
         controller: 'mvSignupCtrl'
       })
+      .when('/chat', { templateUrl: '/partials/main/main',
+        controller: 'mvChatCtrl'
+      })
       .when('/profile', { templateUrl: '/partials/account/profile',
         controller: 'mvProfileCtrl', resolve: routeRoleChecks.user
       })
@@ -47,14 +50,13 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
 
 });
 
-angular.module('app').directive('myYoutube', function($sce) {
+angular.module('app').directnneive('myYoutube', function($sce) {
   return {
     restrict: 'EA',
     scope: { code:'=' },
     replace: true,
     template: '<div style="height:400px;"><iframe width="800px" height="400px" src="{{url}}" frameborder="0" allowfullscreen></iframe></div>',
     link: function (scope) {
-        console.log('here');
         scope.$watch('code', function (newVal) {
            if (newVal) {
                scope.url = $sce.trustAsResourceUrl("http://www.youtube.com/embed/" + newVal);
@@ -71,3 +73,4 @@ angular.module('app').run(function($rootScope, $location) {
     }
   })
 })
+

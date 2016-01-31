@@ -2,9 +2,11 @@ var passport = require('passport');
 
 exports.authenticate = function(req, res, next) {
   req.body.username = req.body.username.toLowerCase();
+  //login through local system.
   var auth = passport.authenticate('local', function(err, user) {
     if(err) {return next(err);}
     if(!user) { res.send({success:false})}
+    //passport.js method for session storage
     req.logIn(user, function(err) {
       if(err) {return next(err);}
       res.send({success:true, user: user});
@@ -15,6 +17,7 @@ exports.authenticate = function(req, res, next) {
 
 exports.requiresApiLogin = function(req, res, next) {
   if(!req.isAuthenticated()) {
+    res.redirect('/');
     res.status(403);
     res.end();
   } else {

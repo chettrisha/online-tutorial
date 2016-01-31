@@ -75,24 +75,6 @@ exports.updateCategory = function(req, res) {
   
 };
 
-
-/*exports.updateCourse = function(req, res) {
-  console.log(req.params.id);
-  var updatedCourse = req.body;
-  delete updatedCourse._id;
-  //create new course in DB  
-    Course.findOneAndUpdate({
-        '_id': req.params.id
-    }, req.body, function(err, course) {
-        if (err) {
-            return handleError(res, err);
-        }
-        console.log(course);
-        return res.json(course);
-    });
-  
-};*/
-
 //update category by id
 exports.getCategory = function(req, res) {
   Categories.find({'_id':req.params.id}).exec(function(err, course) {
