@@ -8,15 +8,15 @@ angular.module('app').controller('mvCategoryDetailCtrl', function($http, $scope,
     });
 
 
- $scope.updateCategory = function(isValid){
-      if(isValid){
-        console.log($scope.cat);
-        $http.put('/api/categories/'+$scope.cat._id,$scope.cat).then(function(response) {
-         console.log(response);
-          mvNotifier.notify('Updated successfully!');
-          $location.path('/categories/edit/'+cat._id);
-          
-        });
-      }
+$scope.updateCategory = function(isValid){
+    if(isValid){
+      //console.log($scope.cat);
+      var updateCategory = {categoryName: $scope.cat.categoryName }
+      $http.put('/api/categories/'+$scope.cat._id,updateCategory).then(function(response) {
+      //console.log(response);
+      mvNotifier.notify('Updated successfully!');
+      $location.path('/categories');
+      });
     }
+  }
 });

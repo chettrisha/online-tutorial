@@ -58,13 +58,13 @@ exports.deleteCategory = function (req, res) {
 
 exports.updateCategory = function(req, res) {
   
-  console.log(req.params.id);
+  console.log(req.params.cid);
 
   var updatedCategory = req.body;
   //delete updatedCategory._id;
   //create new course in DB  
     Categories.findOneAndUpdate({
-        '_id': req.params.id
+        '_id': req.params.cid
     }, req.body, function(err, category) {
         if (err) {
             return handleError(res, err);
